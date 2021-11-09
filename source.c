@@ -67,22 +67,9 @@ int nmea_sentence_to_time(char *sentence, struct GpsTime *time) {
   }
 }
 
-int debug_print_fields(int numfields, char **fields) {
-	printf("Parsed %d fields\r\n",numfields);
-
-	for (int i = 0; i <= numfields; i++) {
-		printf("Field %02d: [%s]\r\n",i,fields[i]);
-	}
-
-  return 0;
-}
-
 int main() {
   char str[] = "$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68";
   char *field[20];
-
-  //int token_count = parse_comma_delimited_str(str, field, 20);
-  //debug_print_fields(token_count, field);
 
   struct GpsTime time;
   int result = nmea_sentence_to_time(str, &time);
